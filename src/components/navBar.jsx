@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles/navbar.css';
 
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [miCuenta, setMiCuenta] = useState(false);
@@ -28,7 +27,7 @@ const Navbar = () => {
       {isProductosRoute && (
         <div className="transformacionTop">
           <img
-            src="/images/butterfly.png"
+            src="https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/butterfly.png?alt=media&token=26abf3b6-9544-4e01-a566-1ec167ccbbbf"
             type="png"
             alt="Mariposa Azul"
             style={{ width: '20px', height: '20px', marginRight: '10px' }}
@@ -56,8 +55,7 @@ const Navbar = () => {
         )}
         <div className="logo">
           <a href="/">
-            <img src="/images/Group 40.png" 
-            type="png" alt="Panambi" />
+            <img src="/images/Group 40.png" type="png" alt="Panambi" />
           </a>
         </div>
         {!isProductosRoute && (
@@ -66,7 +64,9 @@ const Navbar = () => {
           </div>
         )}
         {miCuenta && (
-          <div className={`miCuenta ${miCuenta ? 'animate__fadeInDown' : 'animate__fadeOutUp'}`}>
+          <div
+            className={`miCuenta ${miCuenta ? 'animate__fadeInDown' : 'animate__fadeOutUp'}`}
+          >
             <ul className="navCuenta">
               {isLoggedIn ? (
                 <>
@@ -92,7 +92,9 @@ const Navbar = () => {
         )}
       </nav>
       {isMenuOpen && (
-        <div className={`sidebar-menu ${isMenuOpen ? 'animate__fadeInLeft' : 'animate__fadeOutLeft'}`}>
+        <div
+          className={`sidebar-menu ${isMenuOpen ? 'animate__fadeInLeft' : 'animate__fadeOutLeft'}`}
+        >
           <div className="menu-content">
             <a href="/" onClick={toggleMenu}>
               <i className="fas fa-home"></i> Inicio

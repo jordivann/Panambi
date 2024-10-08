@@ -17,6 +17,7 @@ const MyComponent = () => {
         console.error('Error al obtener productos en MyComponent:', error);
         setError(error.message || 'Ocurrió un error al cargar los productos');
       } finally {
+        console.log('Finalizando fetch de productos');
         setLoading(false);
       }
     };
@@ -40,7 +41,6 @@ const MyComponent = () => {
           <div key={item.id}>
             <h3>{item.title}</h3>
             <p>Precio: {item.price}</p>
-            {/* Agrega más detalles del producto según tu estructura de datos */}
           </div>
         ))
       ) : (

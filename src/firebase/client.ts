@@ -12,10 +12,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export { app };
 
-// Verifica la inicialización
-console.log('Firebase initialized:', app.name);
-console.log('Firestore instance:', db);
+// // Verifica la inicialización
+// console.log('Firebase initialized:', app.name);
+// console.log('Firestore instance:', db);
+
 // const fetchData = async () => {
 //   try {
 //     const snapshot = await getDocs(collection(db, 'productos'));
