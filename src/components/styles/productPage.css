@@ -1,6 +1,13 @@
 .product-page {
   font-family: Arial, sans-serif;
 }
+.product-list{
+  width:90%;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
 
 .breadcrumbs {
   font-size: 14px;

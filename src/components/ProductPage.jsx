@@ -1,62 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { getAllProducts } from '../services/firestoreService';
-
-// const ProductPage = () => {
-//   const [productos, setProductos] = useState([]);
-
-//   useEffect(() => {
-//     obtenerProductos();
-//   }, []);
-
-//   const obtenerProductos = async () => {
-//     try {
-//       console.log('obtenerProductos');
-//       const productosData = await getAllProducts();
-//       setProductos(productosData);
-//     } catch (error) {
-//       console.error('Error al obtener productos:', error);
-//     }
-//   };
-
-//   const getImagenUrl = (imageReference) => {
-//     return `${imageReference}`; // Puedes modificar esto según la lógica de tu URL
-//   };
-
-//   const calcularPrecioConDescuento = (producto) => {
-//     if (producto.discount) {
-//       const precioConDescuento =
-//         producto.price - producto.price * producto.discountPercent;
-//       return precioConDescuento;
-//     }
-//     return producto.price;
-//   };
-
-//   const agregarAlCarrito = (producto) => {
-//     console.log(`Producto agregado al carrito: ${producto.name}`);
-//   };
-
-//   const comprar = () => {
-//     console.log('Iniciando proceso de compra');
-//   };
-
-//   return (
-//     <ul>
-//       {productos.map((product) => (
-//         <li key={product.id}>
-//           <img src={getImagenUrl(product.imageReference)} alt={product.name} />
-//           <h2>{product.name}</h2>
-//           <p>Precio: ${calcularPrecioConDescuento(product).toFixed(2)}</p>
-//           <button onClick={() => agregarAlCarrito(product)}>
-//             Agregar al Carrito
-//           </button>
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
-
-// export default ProductPage;
-
 import React, { useState, useEffect } from 'react';
 import { getAllProducts } from '../services/firestoreService';
 import "./styles/productPage.css"
@@ -110,13 +51,12 @@ const ProductPage = () => {
       <span>/</span>
       <a to="/productos">Productos</a>
     </div>
-    <div className="container">
-      <div className="d-flex w-100 gap-5">
+    <div className="product-list">
         {productos.map((producto) => (
           <div key={producto.id} className="card">
             <a to={`/productos/${producto.id}`} className="product-card">
               <p>{producto.title}</p>
-              <div className="container">
+              <div className="">
                 <img
                   src={getImagenUrl(producto.imageReference)}
                   alt="Producto"
@@ -163,7 +103,6 @@ const ProductPage = () => {
             </div>
           </div>
         ))}
-      </div>
     </div>
   </div>
   );
