@@ -4,9 +4,9 @@ import './styles/carruselPersonas.css';
 const CarruselPersonas = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const personas = [
-    '/images/CV2.png',
-    '/images/CV2.png',
-    '/images/CV2.png'
+    'https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/CV2.png?alt=media&token=6dff7dcc-3e58-4088-98df-a85a4ceb0da8',
+    'https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/CV2.png?alt=media&token=6dff7dcc-3e58-4088-98df-a85a4ceb0da8',
+    'https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/CV2.png?alt=media&token=6dff7dcc-3e58-4088-98df-a85a4ceb0da8',
   ];
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const CarruselPersonas = () => {
     <div className="round-carousel-container">
       <div className="round-carousel">
         {personas.map((image, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className={`carousel-item ${index === activeIndex ? 'active' : ''}`}
           >
             <img src={image} alt={`Imagen ${index + 1}`} />

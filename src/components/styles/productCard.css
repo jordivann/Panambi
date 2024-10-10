@@ -1,0 +1,146 @@
+.card {
+  width: 200px;
+  height: 354px;
+  background: rgba(255, 219, 175, 0.38);
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.card:hover {
+  border: 1px solid black;
+  transform: scale(1.03);
+  background: rgba(255, 219, 175, 0.78);
+}
+
+.product-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.image-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.product-card p {
+  margin: 3px 0;
+  font-size: 0.85em;
+  line-height: 1.2;
+}
+.descuento {
+  color: grey;
+  font-size: 0.8em;
+}
+
+.descuento-porcentaje {
+  color: red;
+  font-size: 0.7em;
+  margin-left: 3px;
+}
+
+.precio-con-descuento {
+  color: green;
+  font-size: 0.95em;
+}
+
+.precio-normal {
+  font-weight: 700; /* Aumenta el grosor de la fuente */
+  font-size: 1.1em; /* Aumenta el tamaño de la fuente */
+  color: #333; /* Cambia el color a un gris oscuro */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Agrega una sombra sutil */
+  margin: 5px 0; /* Añade un margen para separación */
+  transition: color 0.3s; /* Añade una transición suave para el color */
+}
+
+.precio-normal:hover {
+  color: #e26b1b; /* Cambia el color al pasar el mouse */
+}
+
+.button-container {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.button-comprar,
+.button-carrito {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: #252525;
+  transition: background-color 0.3s ease;
+}
+
+.button-comprar:hover,
+.button-carrito:hover {
+  background-color: rgba(226, 117, 25, 0.7);
+  color: #fff;
+}
+
+.button-comprar {
+  background-color: rgba(169, 179, 136, 1);
+  color: #fff;
+  border: 0.7px solid rgba(226, 117, 25, 0.9);
+}
+
+.button-carrito {
+  border: 0.7px solid rgba(226, 117, 25, 0.9);
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 220px;
+  }
+
+  .product-card img {
+  }
+
+  .button-comprar,
+  .button-carrito {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-height: 180px;
+    width: 250px !important;
+  }
+
+  .product-card img {
+  }
+
+  .product-card p {
+    font-size: 0.75em;
+  }
+
+  .button-comprar,
+  .button-carrito {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+}

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getAllProducts } from '../services/firestoreService';
-import "./styles/productPage.css"
+import Loader from './Loader';
+import ProductCard from './ProductCard';
+import './styles/productPage.css';
 
 const ProductPage = () => {
   const [productos, setProductos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // {{ edit_1 }} Nuevo estado para controlar la carga
 
   useEffect(() => {
     obtenerProductos();
@@ -11,11 +14,13 @@ const ProductPage = () => {
 
   const obtenerProductos = async () => {
     try {
-      console.log('obtenerProductos');
+      setIsLoading(true);
       const productosData = await getAllProducts();
       setProductos(productosData);
     } catch (error) {
       console.error('Error al obtener productos:', error);
+    } finally {
+      setIsLoading(false); // {{ edit_3 }} Finalizar la carga
     }
   };
 
@@ -32,79 +37,43 @@ const ProductPage = () => {
     return producto.price;
   };
 
-  const agregarAlCarrito = () => {
-    console.log('Producto agregado al carrito');
+  const agregarAlCarrito = (producto) => {
+    console.log('Producto agregado al carrito', producto);
   };
 
-  const comprar = () => {
-    console.log('Iniciando proceso de compra');
+  const comprar = (producto) => {
+    console.log('Iniciando proceso de compra', producto);
   };
 
   return (
-
-  <div className="product-page">
-    <div className="header-productos">
-      <h1>Productos</h1>
+    <div className="product-page">
+      <div className="header-productos">
+        <h1>Productos</h1>
+      </div>
+      <div className="breadcrumbs">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <a href="/productos">Productos</a>
+      </div>
+      {isLoading ? ( // {{ edit_4 }} Mostrar loader mientras se cargan los datos
+        <div className="loader">
+          <Loader />
+        </div>
+      ) : (
+        <div className="product-list">
+          {productos.map((producto) => (
+            <ProductCard
+              key={producto.id}
+              producto={producto}
+              getImagenUrl={getImagenUrl}
+              calcularPrecioConDescuento={calcularPrecioConDescuento}
+              agregarAlCarrito={agregarAlCarrito}
+              comprar={comprar}
+            />
+          ))}
+        </div>
+      )}
     </div>
-    <div className="breadcrumbs">
-      <a to="/">Inicio</a>
-      <span>/</span>
-      <a to="/productos">Productos</a>
-    </div>
-    <div className="product-list">
-        {productos.map((producto) => (
-          <div key={producto.id} className="card">
-            <a to={`/productos/${producto.id}`} className="product-card">
-              <p>{producto.title}</p>
-              <div className="">
-                <img
-                  src={getImagenUrl(producto.imageReference)}
-                  alt="Producto"
-                />
-              </div>
-              {producto.discount ? (
-                <p className="descuento">
-                  <del>
-                    {producto.price.toLocaleString('en-US', {
-                      style: 'currency',
-                      currency: 'USD',
-                    })}
-                  </del>
-                  <span className="descuento-porcentaje">
-                    {producto.discountPercent * 100}%
-                  </span>
-                  <br />
-                  <strong className="precio-con-descuento">
-                    {calcularPrecioConDescuento(producto).toLocaleString(
-                      'en-US',
-                      { style: 'currency', currency: 'USD' }
-                    )}
-                  </strong>
-                </p>
-              ) : (
-                <p className="precio-normal">
-                  {producto.price.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                  })}
-                </p>
-              )}
-            </a>
-            <div className="d-flex gap-2 m-1 align-items-center justify-content-center">
-              <button
-                onClick={agregarAlCarrito}
-                className="btn button-carrito"
-              >
-                <i className="fas fa-shopping-cart"></i>
-              </button>
-              <button onClick={comprar} className="btn button-comprar">
-                Comprar
-              </button>
-            </div>
-          </div>
-        ))}
-    </div>
-  </div>
   );
 };
 

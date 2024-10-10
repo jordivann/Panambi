@@ -4,14 +4,9 @@ import type { Product } from '../types/Product';
 
 // Obtiene todos los productos de la colección
 export const getAllProducts = async (): Promise<Product[]> => {
-  console.log('getAllProducts called');
   try {
     const productsCol = collection(db, 'productos');
-    console.log('Products collection reference created');
-
-    console.log('Attempting to get documents...');
     const productsSnapshot = await getDocs(productsCol);
-    console.log('Documents retrieved successfully');
 
     const products = productsSnapshot.docs.map((doc) => {
       const data = doc.data();

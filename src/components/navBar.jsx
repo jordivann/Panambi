@@ -32,9 +32,9 @@ const Navbar = () => {
             alt="Mariposa Azul"
             style={{ width: '20px', height: '20px', marginRight: '10px' }}
           />
-          El espacio para que suceda TU transformación
+          <p>El espacio para que suceda TU transformación</p>
           <img
-            src="/images/butterfly.png"
+            src="https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/butterfly.png?alt=media&token=26abf3b6-9544-4e01-a566-1ec167ccbbbf"
             type="png"
             alt="Mariposa Azul"
             style={{ width: '20px', height: '20px', marginLeft: '10px' }}
@@ -55,7 +55,11 @@ const Navbar = () => {
         )}
         <div className="logo">
           <a href="/">
-            <img src="/images/Group 40.png" type="png" alt="Panambi" />
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/Group%2040.png?alt=media&token=f719846c-a3e8-459f-b014-7b25a76fd1b9"
+              type="png"
+              alt="Panambi"
+            />
           </a>
         </div>
         {!isProductosRoute && (
@@ -114,7 +118,11 @@ const Navbar = () => {
           </div>
           <div className="copyright">
             <a href="/">
-              <img src="/images/Group 40.png" type="png" alt="Panambi" />
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/panambi-5d749.appspot.com/o/Group%2040.png?alt=media&token=f719846c-a3e8-459f-b014-7b25a76fd1b9"
+                type="png"
+                alt="Panambi"
+              />
             </a>
             <p>Panambi</p>
           </div>
